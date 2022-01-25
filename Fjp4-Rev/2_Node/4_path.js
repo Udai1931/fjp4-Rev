@@ -1,5 +1,9 @@
 const path = require('path')
 
+//all defination => wrong => module
+
+
+
 let srcPath = "E:\\PepClass\\Fjp4-Rev\\2_Node\\dir1\\1.txt"
 let destPath = "E:\\PepClass\\Fjp4-Rev\\2_Node\\dir2\\"
 

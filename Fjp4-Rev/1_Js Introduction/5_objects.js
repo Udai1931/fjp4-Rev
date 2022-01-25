@@ -59,9 +59,7 @@ for(let key in cap){
 
 cap.movies = ['Age of Ultron' , 'First Avenger'] // add new Property to an object
 
-
 // delete cap.age // delete a propery from an object
-
 
 // console.log(cap)
 
