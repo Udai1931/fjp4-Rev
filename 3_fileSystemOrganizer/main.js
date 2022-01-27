@@ -11,6 +11,27 @@ let command = process.argv[2] //input from cli
 let srcPath = process.argv[3]
 // console.log(srcPath) 
 
+let types = {
+    media: ["mp4", "mkv", "mp3"],
+    archives: ["zip", "7z", "rar", "tar", "gz", "ar", "iso", "xz"],
+    documents: [
+        "docx",
+        "doc",
+        "pdf",
+        "xlsx",
+        "xls",
+        "odt",
+        "ods",
+        "odp",
+        "odg",
+        "odf",
+        "txt",
+        "ps",
+        "tex",
+    ],
+    app: ["exe", "dmg", "pkg", "deb"]
+};
+
 switch(command){
     case "help" : helpFn()
     break
@@ -61,13 +82,30 @@ function orgHelper(srcPath,destPath){
         // console.log(childNames[i]+"=>"+check)
 
         //4. Identify types of all children 
-        let type = getType(childNames[i]);
+        if(check){
+            let type = getType(childNames[i]);
+            console.log(childNames[i]+"=> "+type);
+        }
     }
     //5. Copy/Cut files
 }
 
 function getType(fileName){
-    
+    // console.log(fileName)
+    let ext = path.extname(fileName)
+    ext = ext.slice(1)
+    // console.log(ext)
+
+    for(let type in types){ //loop on object
+        let typeArray = types[type]
+        for(let i=0;i<typeArray.length;i++){
+            if(ext == typeArray[i]){
+                return type
+            }
+        }
+    }
+    // kuch nhi mila
+    return "others"
 }
 
 function treeFn(srcPath){
