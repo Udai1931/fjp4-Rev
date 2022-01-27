@@ -83,11 +83,26 @@ function orgHelper(srcPath,destPath){
 
         //4. Identify types of all children 
         if(check){
-            let type = getType(childNames[i]);
-            console.log(childNames[i]+"=> "+type);
+            let category = getType(childNames[i]);
+            // console.log(childNames[i]+"=> "+type);
+            //5. Copy/Cut files
+            sendFile(childPath,destPath,category)
         }
     }
-    //5. Copy/Cut files
+}
+
+function sendFile(childPath,destDirPath,category){
+    let destFolderPath = path.join(destDirPath,category)
+    let fileName = path.basename(childPath)
+    if(fs.existsSync(destFolderPath)==false){
+        fs.mkdirSync(destFolderPath)
+    }
+
+    //Copy File
+    let destFilePath = path.join(destFolderPath,fileName);
+    fs.copyFileSync(childPath,destFilePath); 
+    fs.unlinkSync(childPath)
+    console.log(fileName+" copied!");
 }
 
 function getType(fileName){
