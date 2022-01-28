@@ -15,8 +15,8 @@ let srcPath = process.argv[3]
 // console.log(srcPath) 
 
 switch(command){
-    // case "help" : helpModule.helpFunction()
-    // break
+    case "help" : helpModule.helpFunction()
+    break
     case "organize" : organizeModule.organizeFunction(srcPath)
     break
     case "tree" : treeModule.treeFunction(srcPath)
