@@ -9,5 +9,4 @@ const cp = require('child_process')
 // cp.execSync('start chrome') //opens chrome
 
 let op = cp.execSync('node temp.js') //start a seprate script
-
 console.log("Output : "+op)
